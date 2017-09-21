@@ -1,6 +1,19 @@
 # RetrofitTest
 Minimal test project to demonstrate build-problem
   
+Update: found solution
+----------------------
+Add
+```
+packagingOptions {
+    pickFirst 'protobuf.meta'
+}
+```
+In the android block in module-gradle file.
+  
+
+Original post
+-------------
 I've found a build-problem, that I have not been able to solve.  
 (There is a workaround though)
   
