@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "nl.bitfactory.retrofittest"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Support
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    //RestClient
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:11.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+
+    //Test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //Make sure espresso waits for http-calls to end with idling-resource
+    implementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0' //COMMENT TO BE ABLE TO BUILD
+    implementation 'com.android.support.test.espresso:espresso-core:3.0.1'  //COMMENT TO BE ABLE TO BUILD
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
